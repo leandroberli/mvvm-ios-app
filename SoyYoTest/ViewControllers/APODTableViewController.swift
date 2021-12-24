@@ -186,6 +186,7 @@ class APODTableViewController: UIViewController, Storyboarded {
         if helperTextfield.isFirstResponder {
             helperTextfield.resignFirstResponder()
         } else {
+            selectedDate = datePicker?.date
             helperTextfield.becomeFirstResponder()
         }
     }
