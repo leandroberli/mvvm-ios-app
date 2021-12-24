@@ -73,7 +73,7 @@ class APODTableViewModel {
             let imageView = UIImageView(image: arrowDownImage)
             imageView.tintColor = .black
             view.addSubview(imageView)
-            view.backgroundColor = .white
+            view.backgroundColor = .systemGray6
             imageView.pin(.trailing, to: view, constant: -10)
             imageView.pin(.centerY, to: view)
             return view

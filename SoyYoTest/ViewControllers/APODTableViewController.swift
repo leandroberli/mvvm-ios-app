@@ -24,7 +24,7 @@ class APODTableViewController: UIViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Soy Yo Test"
+        navigationItem.title = "NASA API"
         initViewModel()
         setHeaderView()
         setupTable()
@@ -97,14 +97,26 @@ class APODTableViewController: UIViewController, Storyboarded {
         selectedDate = nil
         changeHeaderTitle("Last 7 days")
         
+        removeDataSourceAndReaload()
+        
         activityIndicator.isHidden = false
         getAPODs { apods in
-            self.viewModel?.APODModels = apods
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
-                self.tableView.reloadData()
+                self.setDataSourceAndReaload(apods: apods)
             }
         }
+    }
+    
+    private func removeDataSourceAndReaload() {
+        self.viewModel?.APODModels.removeAll()
+        self.tableView.reloadSections([0], with: .automatic)
+        
+    }
+    
+    private func setDataSourceAndReaload(apods: [APOD]?) {
+        self.viewModel?.APODModels = apods ?? []
+        self.tableView.reloadSections([0], with: .automatic)
     }
     
     private func handleDoneToolbar() {
@@ -114,12 +126,13 @@ class APODTableViewController: UIViewController, Storyboarded {
         helperTextfield.resignFirstResponder()
         changeHeaderTitle(date.getFilterDateString())
         
+        removeDataSourceAndReaload()
+        
         activityIndicator.isHidden = false
         getSingleAPOD { apods in
-            self.viewModel?.APODModels = apods
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
-                self.tableView.reloadData()
+                self.setDataSourceAndReaload(apods: apods)
             }
         }
     }
@@ -228,7 +241,7 @@ extension APODTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func showHeaderView() {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0) {
             self.headerView?.alpha = 1
             self.tableView.contentInset.top = 60
         }
