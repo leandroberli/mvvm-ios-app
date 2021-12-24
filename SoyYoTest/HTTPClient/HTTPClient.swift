@@ -17,9 +17,16 @@ struct APIPath {
 class NasaHTTPClient {
     static let shared = NasaHTTPClient()
     
-    public func getAPOD(queryParams: [String: String]?, completion: @escaping ([APOD]?,Error?) -> Void) {
+    public func getAPODs(queryParams: [String: String]?, completion: @escaping ([APOD]?,Error?) -> Void) {
         let url = APIPath.astronomyPOD
         RequestAPI<[APOD]>.get(path: url, queryParams: queryParams) { data, error in
+            completion(data,error)
+        }
+    }
+    
+    public func getSingleAPOD(queryParams: [String: String]?, completion: @escaping (APOD?,Error?) -> Void) {
+        let url = APIPath.astronomyPOD
+        RequestAPI<APOD>.get(path: url, queryParams: queryParams) { data, error in
             completion(data,error)
         }
     }

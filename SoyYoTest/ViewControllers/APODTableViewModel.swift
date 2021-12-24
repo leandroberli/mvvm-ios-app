@@ -8,12 +8,10 @@
 import Foundation
 import UIKit
 
-protocol APODTableViewDelegate {
-    func filterAction()
-}
-
 class APODTableViewModel {
     var touchFilterAction: (() -> (Void))?
+    var touchDoneFilterAction: (() -> Void)?
+    var touchSevenDaysFilterAction: (() -> Void)?
     var APODModels: [APOD] = []
     
     var cellReuseId: String {
@@ -25,6 +23,34 @@ class APODTableViewModel {
     var cellNib: UINib {
         get {
             return UINib(nibName: "APODTableViewCell", bundle: nil)
+        }
+    }
+    
+    var datePicker: UIDatePicker {
+        get {
+            let picker = UIDatePicker()
+            picker.preferredDatePickerStyle = .wheels
+            picker.datePickerMode = .date
+            //today
+            picker.maximumDate = Date()
+            return picker
+        }
+    }
+    
+    var dateToolbar: UIToolbar {
+        get {
+            let toolbar = UIToolbar()
+            toolbar.barStyle = .default
+            toolbar.sizeToFit()
+            
+            let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(filterDoneButtonAction))
+            let doneButton2 = UIBarButtonItem(title: "Last 7 days", style: .plain, target: self, action: #selector(filterSevenDaysButtonAction))
+            let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace , target: nil, action: nil)
+            
+            toolbar.setItems([space, doneButton2, doneButton ], animated: false)
+            toolbar.isUserInteractionEnabled = true
+            
+            return toolbar
         }
     }
     
@@ -56,6 +82,22 @@ class APODTableViewModel {
     
     @objc func filterButtonAction() {
         guard let action = self.touchFilterAction else {
+            print("ERROR: ", #function )
+            return
+        }
+        action()
+    }
+    
+    @objc func filterDoneButtonAction() {
+        guard let action = self.touchDoneFilterAction else {
+            print("ERROR: ", #function )
+            return
+        }
+        action()
+    }
+    
+    @objc func filterSevenDaysButtonAction() {
+        guard let action = self.touchSevenDaysFilterAction else {
             print("ERROR: ", #function )
             return
         }

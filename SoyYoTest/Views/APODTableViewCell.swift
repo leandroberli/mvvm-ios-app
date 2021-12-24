@@ -28,8 +28,8 @@ class APODTableViewCell: UITableViewCell {
         guard let apodModel = model else {
             return
         }
+        subtitleLabel.text = apodModel.getDateString()
         titleLabel.text = apodModel.title
-        subtitleLabel.text = apodModel.date
         descriptionLabel.text = apodModel.explanation
         picture.kf.setImage(with: URL(string: apodModel.url))
         

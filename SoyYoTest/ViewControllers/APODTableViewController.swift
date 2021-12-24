@@ -12,8 +12,13 @@ class APODTableViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: APODTableViewModel?
+    var datePicker: UIDatePicker?
+    var helperTextfield = UITextField()
+    var selectedDate: Date?
+    
     var filterView: UIView?
+    
+    var viewModel: APODTableViewModel?
     let service = NasaHTTPClient.shared
     var lastContetOffset: CGPoint = CGPoint(x: 0, y: 60)
 
@@ -23,6 +28,29 @@ class APODTableViewController: UIViewController {
         initViewModel()
         setFilterView()
         setupTable()
+        setHelperTextfield()
+    }
+    
+    //For Show date picker
+    private func setHelperTextfield() {
+        self.datePicker = viewModel?.datePicker
+        //self.datePicker.delegate = self
+        self.datePicker?.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        helperTextfield.inputView = self.datePicker
+        helperTextfield.inputAccessoryView = viewModel?.dateToolbar
+        self.view.addSubview(helperTextfield)
+    }
+    
+    @objc func datePickerValueChanged(_ datePicker: UIDatePicker) {
+        selectedDate = datePicker.date
+    }
+    
+    private func changeHeaderTitle(_ title: String) {
+        filterView?.subviews.forEach( { view in
+            if let button = view as? UIButton {
+                button.setTitle(title, for: .normal)
+            }
+        })
     }
     
     func setupTable() {
@@ -45,8 +73,17 @@ class APODTableViewController: UIViewController {
     
     func initViewModel() {
         viewModel = APODTableViewModel()
+        
         viewModel?.touchFilterAction = {
             self.filterAction()
+        }
+        
+        viewModel?.touchSevenDaysFilterAction = {
+            self.handle7DaysToolbar()
+        }
+        
+        viewModel?.touchDoneFilterAction = {
+            self.handleDoneToolbar()
         }
         
         getAPODs { apods in
@@ -58,12 +95,42 @@ class APODTableViewController: UIViewController {
         }
     }
     
+    private func handle7DaysToolbar() {
+        helperTextfield.resignFirstResponder()
+        selectedDate = nil
+        changeHeaderTitle("Last 7 days")
+        
+        activityIndicator.isHidden = false
+        getAPODs { apods in
+            self.viewModel?.APODModels = apods
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func handleDoneToolbar() {
+        guard let date = self.selectedDate else {
+            return
+        }
+        helperTextfield.resignFirstResponder()
+        changeHeaderTitle(date.getFilterDateString())
+        
+        activityIndicator.isHidden = false
+        getSingleAPOD { apods in
+            self.viewModel?.APODModels = apods
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     private func getAPODs(completion: @escaping (([APOD]) -> Void)) {
-        //TODO: Dynamic dates
-        var params = [String: String]()
-        params["start_date"] = "2021-12-15"
-        params["end_date"] = "2021-12-23"
-        service.getAPOD(queryParams: params) { apods, error in
+        let params = getRequestParams()
+        
+        service.getAPODs(queryParams: params) { apods, error in
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
             }
@@ -71,16 +138,60 @@ class APODTableViewController: UIViewController {
                 completion([])
                 return
             }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
             completion(apods ?? [])
         }
     }
     
+    private func getSingleAPOD(completion: @escaping (([APOD]) -> Void)) {
+        let params = getRequestParams()
+        service.getSingleAPOD(queryParams: params) { apod, error in
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+            }
+            if let _ = error {
+                completion([])
+                return
+            }
+            if let apod = apod {
+                completion([apod])
+            } else {
+                completion([])
+            }
+        }
+    }
+    
+    func getRequestParams() -> [String: String] {
+        var params = [String: String]()
+        //specific date
+        if let currentSelectedDate = self.selectedDate {
+            params["date"] = currentSelectedDate.getQueryParamDateString()
+        } else {
+            //Default - Last 7 days pictures
+            let lastDays = last7Days()
+            params["start_date"] = lastDays.last?.getQueryParamDateString()
+            params["end_date"] = lastDays.first?.getQueryParamDateString()
+        }
+        
+        return params
+    }
+    
+    private func last7Days() -> [Date] {
+        let cal = Calendar.current
+        var date = cal.startOfDay(for: Date())
+        var days = [Date]()
+        for _ in 1 ... 7 {
+            days.append(date)
+            date = cal.date(byAdding: .day, value: -1, to: date)!
+        }
+        return days
+    }
+    
     func filterAction() {
-        let vc = UIViewController()
-        present(vc, animated: true, completion: nil)
+        if helperTextfield.isFirstResponder {
+            helperTextfield.resignFirstResponder()
+        } else {
+            helperTextfield.becomeFirstResponder()
+        }
     }
     
     private func hideHeaderView() {
