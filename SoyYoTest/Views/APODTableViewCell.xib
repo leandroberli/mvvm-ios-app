@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APODTableViewCell" rowHeight="377" id="KGk-i7-Jjw" customClass="APODTableViewCell" customModule="SoyYoTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="445" height="377"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="445" height="377"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulc-Kz-Gtn">
+                        <rect key="frame" x="10" y="0.0" width="425" height="367"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apod title text here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZZ-KJ-5rn">
+                                <rect key="frame" x="16" y="16" width="393" height="37"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UUW-gp-1Is">
+                                <rect key="frame" x="0.0" y="68" width="425" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="9OT-Mn-xwh"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3xL-FS-1Hy">
+                                <rect key="frame" x="16" y="276" width="393" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 / 12 / 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sm7-8w-rDx">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGray2Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkc-pg-Faq">
+                                        <rect key="frame" x="0.0" y="24.5" width="393" height="50.5"/>
+                                        <string key="text">What does Comet Leonard look like from space?  Today's featured image from Origin.Space's Yangwang-1 space telescope shows not only the currently bright comet -- but several other space delights as well. Taken in optical and ultraviolet light, C/2021 A1 (Leonard) is visible with an extended tail near the image center as it appeared five days ago.  The Earth is visible on the lower right, while layers of the Earth's atmosphere glow diagonally from the lower left to the upper right. The trails of two satellites can be seen in front of a myriad of distant stars that dot the background on the upper left. The faint bands of light running diagonally from the lower right to the upper left are auroras. Finally, the image also caught a meteor streaking just below the airglow. To see Comet Leonard yourself from the Earth's surface during the next few days, look toward the western horizon just after sunset or just before sunrise.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3xL-FS-1Hy" firstAttribute="top" secondItem="UUW-gp-1Is" secondAttribute="bottom" constant="8" id="GSi-4y-bAr"/>
+                            <constraint firstItem="UUW-gp-1Is" firstAttribute="top" secondItem="IZZ-KJ-5rn" secondAttribute="bottom" constant="15" id="Jc6-xH-nO2"/>
+                            <constraint firstAttribute="trailing" secondItem="IZZ-KJ-5rn" secondAttribute="trailing" constant="16" id="Rt7-7Q-o5N"/>
+                            <constraint firstItem="IZZ-KJ-5rn" firstAttribute="leading" secondItem="ulc-Kz-Gtn" secondAttribute="leading" constant="16" id="YfC-bt-RPX"/>
+                            <constraint firstAttribute="bottom" secondItem="3xL-FS-1Hy" secondAttribute="bottom" constant="16" id="Zkm-cz-Q6b"/>
+                            <constraint firstAttribute="trailing" secondItem="UUW-gp-1Is" secondAttribute="trailing" id="iLw-r2-gse"/>
+                            <constraint firstItem="3xL-FS-1Hy" firstAttribute="leading" secondItem="IZZ-KJ-5rn" secondAttribute="leading" id="jt6-F6-rga"/>
+                            <constraint firstItem="3xL-FS-1Hy" firstAttribute="trailing" secondItem="IZZ-KJ-5rn" secondAttribute="trailing" id="psp-t3-Ola"/>
+                            <constraint firstItem="IZZ-KJ-5rn" firstAttribute="top" secondItem="ulc-Kz-Gtn" secondAttribute="top" constant="16" id="sbR-04-eEc"/>
+                            <constraint firstItem="UUW-gp-1Is" firstAttribute="leading" secondItem="ulc-Kz-Gtn" secondAttribute="leading" id="zbI-Bi-7pp"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ulc-Kz-Gtn" secondAttribute="bottom" constant="10" id="8ul-UD-t46"/>
+                    <constraint firstAttribute="trailing" secondItem="ulc-Kz-Gtn" secondAttribute="trailing" constant="10" id="AdB-rp-qSr"/>
+                    <constraint firstItem="ulc-Kz-Gtn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Zyh-n4-cpl"/>
+                    <constraint firstItem="ulc-Kz-Gtn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zqm-HU-pzk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="kkc-pg-Faq" id="2gj-v7-mH8"/>
+                <outlet property="picture" destination="UUW-gp-1Is" id="jTy-Ba-gMM"/>
+                <outlet property="pictureHeightConstraint" destination="9OT-Mn-xwh" id="qf7-gl-XO4"/>
+                <outlet property="subtitleLabel" destination="sm7-8w-rDx" id="T5R-sh-RV9"/>
+                <outlet property="titleLabel" destination="IZZ-KJ-5rn" id="5go-ss-P9j"/>
+            </connections>
+            <point key="canvasLocation" x="225.36231884057972" y="237.38839285714283"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

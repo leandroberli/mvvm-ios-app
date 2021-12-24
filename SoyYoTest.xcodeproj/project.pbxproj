@@ -7,15 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37F6081CE92147C36A46FBDD /* Pods_SoyYoTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDD03B420A62A8BCB759F74 /* Pods_SoyYoTest.framework */; };
+		4E010F88DF9015325A9A725F /* Pods_SoyYoTest_SoyYoTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1805A4FF2C6DFDA31F5A309 /* Pods_SoyYoTest_SoyYoTestUITests.framework */; };
+		523EA9A40FBBD8A4BE6E2EF3 /* Pods_SoyYoTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BB81DC0BEFA62B72631675 /* Pods_SoyYoTestTests.framework */; };
+		9A155504277561FB0080A1DA /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A155503277561FB0080A1DA /* AppCordinator.swift */; };
+		9A155507277565CB0080A1DA /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A155506277565CB0080A1DA /* Constraints.swift */; };
 		9A77268B2773D3390023C5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77268A2773D3390023C5C3 /* AppDelegate.swift */; };
 		9A77268D2773D3390023C5C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77268C2773D3390023C5C3 /* SceneDelegate.swift */; };
-		9A77268F2773D3390023C5C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77268E2773D3390023C5C3 /* ViewController.swift */; };
+		9A77268F2773D3390023C5C3 /* APODTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77268E2773D3390023C5C3 /* APODTableViewController.swift */; };
 		9A7726922773D3390023C5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7726902773D3390023C5C3 /* Main.storyboard */; };
 		9A7726942773D33A0023C5C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A7726932773D33A0023C5C3 /* Assets.xcassets */; };
 		9A7726972773D33A0023C5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7726952773D33A0023C5C3 /* LaunchScreen.storyboard */; };
 		9A7726A22773D33A0023C5C3 /* SoyYoTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7726A12773D33A0023C5C3 /* SoyYoTestTests.swift */; };
 		9A7726AC2773D33A0023C5C3 /* SoyYoTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7726AB2773D33A0023C5C3 /* SoyYoTestUITests.swift */; };
 		9A7726AE2773D33A0023C5C3 /* SoyYoTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7726AD2773D33A0023C5C3 /* SoyYoTestUITestsLaunchTests.swift */; };
+		9A7726BC2773D3C20023C5C3 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7726BB2773D3C20023C5C3 /* HTTPClient.swift */; };
+		9A7726BE2773D4010023C5C3 /* HTTPConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7726BD2773D4010023C5C3 /* HTTPConstants.swift */; };
+		9A7726C02773DD980023C5C3 /* HTTPHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7726BF2773DD980023C5C3 /* HTTPHelpers.swift */; };
+		9AB03C602774BF8B00B1F577 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB03C5F2774BF8B00B1F577 /* APOD.swift */; };
+		9AB03C652774C9B800B1F577 /* APODTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB03C642774C9B800B1F577 /* APODTableViewModel.swift */; };
+		9AB03C692774CCC000B1F577 /* APODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB03C672774CCC000B1F577 /* APODTableViewCell.swift */; };
+		9AB03C6A2774CCC000B1F577 /* APODTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB03C682774CCC000B1F577 /* APODTableViewCell.xib */; };
+		9AF088DC2774DA42003F7B8F /* APODDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF088DB2774DA42003F7B8F /* APODDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +49,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1752816A16D1F937723CFDBC /* Pods-SoyYoTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoyYoTestTests.release.xcconfig"; path = "Target Support Files/Pods-SoyYoTestTests/Pods-SoyYoTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		24B7B399C9E93B442E90F45A /* Pods-SoyYoTest-SoyYoTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoyYoTest-SoyYoTestUITests.debug.xcconfig"; path = "Target Support Files/Pods-SoyYoTest-SoyYoTestUITests/Pods-SoyYoTest-SoyYoTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		52608A5EA49B6DC3ED0C3CFD /* Pods-SoyYoTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoyYoTestTests.debug.xcconfig"; path = "Target Support Files/Pods-SoyYoTestTests/Pods-SoyYoTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		67BB81DC0BEFA62B72631675 /* Pods_SoyYoTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoyYoTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C2CBFEE8B2DB3164E5880D1 /* Pods-SoyYoTest-SoyYoTestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoyYoTest-SoyYoTestUITests.release.xcconfig"; path = "Target Support Files/Pods-SoyYoTest-SoyYoTestUITests/Pods-SoyYoTest-SoyYoTestUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9A155503277561FB0080A1DA /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
+		9A155506277565CB0080A1DA /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		9A7726872773D3390023C5C3 /* SoyYoTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoyYoTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A77268A2773D3390023C5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A77268C2773D3390023C5C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9A77268E2773D3390023C5C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9A77268E2773D3390023C5C3 /* APODTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTableViewController.swift; sourceTree = "<group>"; };
 		9A7726912773D3390023C5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A7726932773D33A0023C5C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A7726962773D33A0023C5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +69,18 @@
 		9A7726A72773D33A0023C5C3 /* SoyYoTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoyYoTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7726AB2773D33A0023C5C3 /* SoyYoTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyYoTestUITests.swift; sourceTree = "<group>"; };
 		9A7726AD2773D33A0023C5C3 /* SoyYoTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoyYoTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9A7726BB2773D3C20023C5C3 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		9A7726BD2773D4010023C5C3 /* HTTPConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConstants.swift; sourceTree = "<group>"; };
+		9A7726BF2773DD980023C5C3 /* HTTPHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHelpers.swift; sourceTree = "<group>"; };
+		9AB03C5F2774BF8B00B1F577 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
+		9AB03C642774C9B800B1F577 /* APODTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTableViewModel.swift; sourceTree = "<group>"; };
+		9AB03C672774CCC000B1F577 /* APODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTableViewCell.swift; sourceTree = "<group>"; };
+		9AB03C682774CCC000B1F577 /* APODTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APODTableViewCell.xib; sourceTree = "<group>"; };
+		9AF088DB2774DA42003F7B8F /* APODDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODDetailViewController.swift; sourceTree = "<group>"; };
+		AEDD03B420A62A8BCB759F74 /* Pods_SoyYoTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoyYoTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1920E2B2B4C9F9B41D9AFB3 /* Pods-SoyYoTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoyYoTest.debug.xcconfig"; path = "Target Support Files/Pods-SoyYoTest/Pods-SoyYoTest.debug.xcconfig"; sourceTree = "<group>"; };
+		F1805A4FF2C6DFDA31F5A309 /* Pods_SoyYoTest_SoyYoTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoyYoTest_SoyYoTestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFA1BC5315331396BACDA7BC /* Pods-SoyYoTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoyYoTest.release.xcconfig"; path = "Target Support Files/Pods-SoyYoTest/Pods-SoyYoTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F6081CE92147C36A46FBDD /* Pods_SoyYoTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523EA9A40FBBD8A4BE6E2EF3 /* Pods_SoyYoTestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +104,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E010F88DF9015325A9A725F /* Pods_SoyYoTest_SoyYoTestUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		229C3B7B598A69B3C89A776E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEDD03B420A62A8BCB759F74 /* Pods_SoyYoTest.framework */,
+				F1805A4FF2C6DFDA31F5A309 /* Pods_SoyYoTest_SoyYoTestUITests.framework */,
+				67BB81DC0BEFA62B72631675 /* Pods_SoyYoTestTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A155505277565A80080A1DA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9A155506277565CB0080A1DA /* Constraints.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9A77267E2773D3390023C5C3 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +136,8 @@
 				9A7726A02773D33A0023C5C3 /* SoyYoTestTests */,
 				9A7726AA2773D33A0023C5C3 /* SoyYoTestUITests */,
 				9A7726882773D3390023C5C3 /* Products */,
+				E1439622C7CF19C629A2C4C1 /* Pods */,
+				229C3B7B598A69B3C89A776E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +154,18 @@
 		9A7726892773D3390023C5C3 /* SoyYoTest */ = {
 			isa = PBXGroup;
 			children = (
+				9A155505277565A80080A1DA /* Helpers */,
+				9AB03C662774CCA400B1F577 /* Views */,
+				9AB03C612774C86F00B1F577 /* ViewControllers */,
+				9AB03C5E2774BEA200B1F577 /* Models */,
+				9A7726BA2773D37C0023C5C3 /* HTTPClient */,
 				9A77268A2773D3390023C5C3 /* AppDelegate.swift */,
 				9A77268C2773D3390023C5C3 /* SceneDelegate.swift */,
-				9A77268E2773D3390023C5C3 /* ViewController.swift */,
 				9A7726902773D3390023C5C3 /* Main.storyboard */,
 				9A7726932773D33A0023C5C3 /* Assets.xcassets */,
 				9A7726952773D33A0023C5C3 /* LaunchScreen.storyboard */,
 				9A7726982773D33A0023C5C3 /* Info.plist */,
+				9A155503277561FB0080A1DA /* AppCordinator.swift */,
 			);
 			path = SoyYoTest;
 			sourceTree = "<group>";
@@ -127,6 +187,56 @@
 			path = SoyYoTestUITests;
 			sourceTree = "<group>";
 		};
+		9A7726BA2773D37C0023C5C3 /* HTTPClient */ = {
+			isa = PBXGroup;
+			children = (
+				9A7726BB2773D3C20023C5C3 /* HTTPClient.swift */,
+				9A7726BD2773D4010023C5C3 /* HTTPConstants.swift */,
+				9A7726BF2773DD980023C5C3 /* HTTPHelpers.swift */,
+			);
+			path = HTTPClient;
+			sourceTree = "<group>";
+		};
+		9AB03C5E2774BEA200B1F577 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9AB03C5F2774BF8B00B1F577 /* APOD.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9AB03C612774C86F00B1F577 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9A77268E2773D3390023C5C3 /* APODTableViewController.swift */,
+				9AB03C642774C9B800B1F577 /* APODTableViewModel.swift */,
+				9AF088DB2774DA42003F7B8F /* APODDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9AB03C662774CCA400B1F577 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9AB03C672774CCC000B1F577 /* APODTableViewCell.swift */,
+				9AB03C682774CCC000B1F577 /* APODTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1439622C7CF19C629A2C4C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D1920E2B2B4C9F9B41D9AFB3 /* Pods-SoyYoTest.debug.xcconfig */,
+				FFA1BC5315331396BACDA7BC /* Pods-SoyYoTest.release.xcconfig */,
+				24B7B399C9E93B442E90F45A /* Pods-SoyYoTest-SoyYoTestUITests.debug.xcconfig */,
+				8C2CBFEE8B2DB3164E5880D1 /* Pods-SoyYoTest-SoyYoTestUITests.release.xcconfig */,
+				52608A5EA49B6DC3ED0C3CFD /* Pods-SoyYoTestTests.debug.xcconfig */,
+				1752816A16D1F937723CFDBC /* Pods-SoyYoTestTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +244,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A7726B12773D33A0023C5C3 /* Build configuration list for PBXNativeTarget "SoyYoTest" */;
 			buildPhases = (
+				19C5FE2361818454BA7EF4BA /* [CP] Check Pods Manifest.lock */,
 				9A7726832773D3390023C5C3 /* Sources */,
 				9A7726842773D3390023C5C3 /* Frameworks */,
 				9A7726852773D3390023C5C3 /* Resources */,
+				B3B983C1656600FAEE18B46A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +263,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A7726B42773D33A0023C5C3 /* Build configuration list for PBXNativeTarget "SoyYoTestTests" */;
 			buildPhases = (
+				692A64FCD718EDBE0E26DB38 /* [CP] Check Pods Manifest.lock */,
 				9A7726992773D33A0023C5C3 /* Sources */,
 				9A77269A2773D33A0023C5C3 /* Frameworks */,
 				9A77269B2773D33A0023C5C3 /* Resources */,
@@ -169,9 +282,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A7726B72773D33A0023C5C3 /* Build configuration list for PBXNativeTarget "SoyYoTestUITests" */;
 			buildPhases = (
+				7C52AC184A272CD4B136391F /* [CP] Check Pods Manifest.lock */,
 				9A7726A32773D33A0023C5C3 /* Sources */,
 				9A7726A42773D33A0023C5C3 /* Frameworks */,
 				9A7726A52773D33A0023C5C3 /* Resources */,
+				29B1B1E5F7ECAA48B3428842 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7726972773D33A0023C5C3 /* LaunchScreen.storyboard in Resources */,
+				9AB03C6A2774CCC000B1F577 /* APODTableViewCell.xib in Resources */,
 				9A7726942773D33A0023C5C3 /* Assets.xcassets in Resources */,
 				9A7726922773D3390023C5C3 /* Main.storyboard in Resources */,
 			);
@@ -253,13 +369,125 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19C5FE2361818454BA7EF4BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SoyYoTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29B1B1E5F7ECAA48B3428842 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SoyYoTest-SoyYoTestUITests/Pods-SoyYoTest-SoyYoTestUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SoyYoTest-SoyYoTestUITests/Pods-SoyYoTest-SoyYoTestUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SoyYoTest-SoyYoTestUITests/Pods-SoyYoTest-SoyYoTestUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		692A64FCD718EDBE0E26DB38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SoyYoTestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C52AC184A272CD4B136391F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SoyYoTest-SoyYoTestUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3B983C1656600FAEE18B46A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SoyYoTest/Pods-SoyYoTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SoyYoTest/Pods-SoyYoTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SoyYoTest/Pods-SoyYoTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9A7726832773D3390023C5C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A77268F2773D3390023C5C3 /* ViewController.swift in Sources */,
+				9A77268F2773D3390023C5C3 /* APODTableViewController.swift in Sources */,
+				9AF088DC2774DA42003F7B8F /* APODDetailViewController.swift in Sources */,
+				9A7726C02773DD980023C5C3 /* HTTPHelpers.swift in Sources */,
+				9AB03C692774CCC000B1F577 /* APODTableViewCell.swift in Sources */,
+				9A155507277565CB0080A1DA /* Constraints.swift in Sources */,
+				9A7726BE2773D4010023C5C3 /* HTTPConstants.swift in Sources */,
+				9AB03C652774C9B800B1F577 /* APODTableViewModel.swift in Sources */,
+				9AB03C602774BF8B00B1F577 /* APOD.swift in Sources */,
 				9A77268B2773D3390023C5C3 /* AppDelegate.swift in Sources */,
+				9A7726BC2773D3C20023C5C3 /* HTTPClient.swift in Sources */,
+				9A155504277561FB0080A1DA /* AppCordinator.swift in Sources */,
 				9A77268D2773D3390023C5C3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +662,7 @@
 		};
 		9A7726B22773D33A0023C5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1920E2B2B4C9F9B41D9AFB3 /* Pods-SoyYoTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -461,6 +690,7 @@
 		};
 		9A7726B32773D33A0023C5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFA1BC5315331396BACDA7BC /* Pods-SoyYoTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -488,6 +718,7 @@
 		};
 		9A7726B52773D33A0023C5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52608A5EA49B6DC3ED0C3CFD /* Pods-SoyYoTestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +743,7 @@
 		};
 		9A7726B62773D33A0023C5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1752816A16D1F937723CFDBC /* Pods-SoyYoTestTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -536,6 +768,7 @@
 		};
 		9A7726B82773D33A0023C5C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24B7B399C9E93B442E90F45A /* Pods-SoyYoTest-SoyYoTestUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -558,6 +791,7 @@
 		};
 		9A7726B92773D33A0023C5C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C2CBFEE8B2DB3164E5880D1 /* Pods-SoyYoTest-SoyYoTestUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
