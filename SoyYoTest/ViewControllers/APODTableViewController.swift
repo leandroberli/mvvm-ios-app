@@ -7,81 +7,39 @@
 
 import UIKit
 
-class APODTableViewController: UIViewController {
+class APODTableViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
+    var didTapAPODItem: ((APOD) -> Void)?
+
     var datePicker: UIDatePicker?
     var helperTextfield = UITextField()
     var selectedDate: Date?
-    
-    var filterView: UIView?
-    
+    var headerView: UIView?
     var viewModel: APODTableViewModel?
     let service = NasaHTTPClient.shared
     var lastContetOffset: CGPoint = CGPoint(x: 0, y: 60)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Soy yo test"
+        navigationItem.title = "Soy Yo Test"
         initViewModel()
-        setFilterView()
+        setHeaderView()
         setupTable()
         setHelperTextfield()
-    }
-    
-    //For Show date picker
-    private func setHelperTextfield() {
-        self.datePicker = viewModel?.datePicker
-        //self.datePicker.delegate = self
-        self.datePicker?.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
-        helperTextfield.inputView = self.datePicker
-        helperTextfield.inputAccessoryView = viewModel?.dateToolbar
-        self.view.addSubview(helperTextfield)
-    }
-    
-    @objc func datePickerValueChanged(_ datePicker: UIDatePicker) {
-        selectedDate = datePicker.date
-    }
-    
-    private func changeHeaderTitle(_ title: String) {
-        filterView?.subviews.forEach( { view in
-            if let button = view as? UIButton {
-                button.setTitle(title, for: .normal)
-            }
-        })
-    }
-    
-    func setupTable() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 10, right: 0)
-        tableView.register(viewModel?.cellNib, forCellReuseIdentifier: viewModel?.cellReuseId ?? "" )
-        tableView.bounces = false
-    }
-    
-    
-    func setFilterView() {
-        filterView = viewModel?.headerView
-        self.view.addSubview(filterView!)
-        filterView?.pin(.leading, .trailing, to: self.view)
-        filterView?.pin(.topMargin, to: tableView)
-        filterView?.pin(.height, constant: 50)
-        self.view.bringSubviewToFront(filterView!)
     }
     
     func initViewModel() {
         viewModel = APODTableViewModel()
         
         viewModel?.touchFilterAction = {
-            self.filterAction()
+            self.handleOpenDatepicker()
         }
-        
         viewModel?.touchSevenDaysFilterAction = {
             self.handle7DaysToolbar()
         }
-        
         viewModel?.touchDoneFilterAction = {
             self.handleDoneToolbar()
         }
@@ -95,6 +53,45 @@ class APODTableViewController: UIViewController {
         }
     }
     
+    func setHeaderView() {
+        headerView = viewModel?.headerView
+        self.view.addSubview(headerView!)
+        headerView?.pin(.leading, .trailing, to: self.view)
+        headerView?.pin(.topMargin, to: tableView)
+        headerView?.pin(.height, constant: 50)
+        self.view.bringSubviewToFront(headerView!)
+    }
+    
+    func setupTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 10, right: 0)
+        tableView.register(viewModel?.cellNib, forCellReuseIdentifier: viewModel?.cellReuseId ?? "" )
+        tableView.bounces = false
+    }
+    
+    //For Show date picker
+    private func setHelperTextfield() {
+        datePicker = viewModel?.datePicker
+        datePicker?.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        helperTextfield.inputView = self.datePicker
+        helperTextfield.inputAccessoryView = viewModel?.dateToolbar
+        self.view.addSubview(helperTextfield)
+    }
+    
+    @objc func datePickerValueChanged(_ datePicker: UIDatePicker) {
+        selectedDate = datePicker.date
+    }
+    
+    private func changeHeaderTitle(_ title: String) {
+        headerView?.subviews.forEach( { view in
+            if let button = view as? UIButton {
+                button.setTitle(title, for: .normal)
+            }
+        })
+    }
+    
+    //MARK: Toolbar actions
     private func handle7DaysToolbar() {
         helperTextfield.resignFirstResponder()
         selectedDate = nil
@@ -127,9 +124,9 @@ class APODTableViewController: UIViewController {
         }
     }
     
+    
     private func getAPODs(completion: @escaping (([APOD]) -> Void)) {
         let params = getRequestParams()
-        
         service.getAPODs(queryParams: params) { apods, error in
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
@@ -167,15 +164,14 @@ class APODTableViewController: UIViewController {
             params["date"] = currentSelectedDate.getQueryParamDateString()
         } else {
             //Default - Last 7 days pictures
-            let lastDays = last7Days()
+            let lastDays = get7IntervalDates()
             params["start_date"] = lastDays.last?.getQueryParamDateString()
             params["end_date"] = lastDays.first?.getQueryParamDateString()
         }
-        
         return params
     }
     
-    private func last7Days() -> [Date] {
+    private func get7IntervalDates() -> [Date] {
         let cal = Calendar.current
         var date = cal.startOfDay(for: Date())
         var days = [Date]()
@@ -186,25 +182,11 @@ class APODTableViewController: UIViewController {
         return days
     }
     
-    func filterAction() {
+    func handleOpenDatepicker() {
         if helperTextfield.isFirstResponder {
             helperTextfield.resignFirstResponder()
         } else {
             helperTextfield.becomeFirstResponder()
-        }
-    }
-    
-    private func hideHeaderView() {
-        UIView.animate(withDuration: 0.2) {
-            self.filterView?.alpha = 0
-            self.tableView.contentInset.top = 10
-        }
-    }
-    
-    private func showHeaderView() {
-        UIView.animate(withDuration: 0.2) {
-            self.filterView?.alpha = 1
-            self.tableView.contentInset.top = 60
         }
     }
 }
@@ -223,11 +205,9 @@ extension APODTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: Coordinator pattern
+        helperTextfield.resignFirstResponder()
         guard let model = viewModel?.APODModels[indexPath.row] else { return }
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "APODDetailViewController") as! APODDetailViewController
-        vc.apod = model
-        navigationController?.pushViewController(vc, animated: true)
+        didTapAPODItem?(model)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -237,6 +217,20 @@ extension APODTableViewController: UITableViewDelegate, UITableViewDataSource {
             showHeaderView()
         }
         lastContetOffset = scrollView.contentOffset
+    }
+    
+    private func hideHeaderView() {
+        UIView.animate(withDuration: 0.2) {
+            self.headerView?.alpha = 0
+            self.tableView.contentInset.top = 10
+        }
+    }
+    
+    private func showHeaderView() {
+        UIView.animate(withDuration: 0.2) {
+            self.headerView?.alpha = 1
+            self.tableView.contentInset.top = 60
+        }
     }
 }
 

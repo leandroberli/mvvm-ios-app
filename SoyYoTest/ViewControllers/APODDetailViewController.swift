@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class APODDetailViewController: UIViewController {
+class APODDetailViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,6 +20,9 @@ class APODDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.title = "APOD Date: \(apod.getDateString())"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         setupModel(apod)
     }
     
@@ -29,7 +32,7 @@ class APODDetailViewController: UIViewController {
         descLabel.text = model.explanation
         picture.kf.setImage(with: URL(string: model.url))
         if model.copyright != nil {
-            copyrightLabel.text = model.copyright
+            copyrightLabel.text = "Copyright: \(model.copyright ?? "")"
         } else {
             copyrightLabel.isHidden = true
         }
