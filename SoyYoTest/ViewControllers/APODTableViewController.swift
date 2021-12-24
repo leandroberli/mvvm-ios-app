@@ -13,23 +13,34 @@ class APODTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: APODTableViewModel?
+    var filterView: UIView?
     let service = NasaHTTPClient.shared
+    var lastContetOffset: CGPoint = CGPoint(x: 0, y: 60)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Soy yo test"
         initViewModel()
-        self.navigationItem.rightBarButtonItem = viewModel?.getFilterNavItem
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableHeaderView = viewModel?.getHeaderView
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        tableView.register(UINib(nibName: "APODTableViewCell", bundle: nil), forCellReuseIdentifier: "APODTableViewCell")
+        setFilterView()
+        setupTable()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50)
-        tableView.tableHeaderView?.layoutSubviews()
+    func setupTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 10, right: 0)
+        tableView.register(viewModel?.cellNib, forCellReuseIdentifier: viewModel?.cellReuseId ?? "" )
+        tableView.bounces = false
+    }
+    
+    
+    func setFilterView() {
+        filterView = viewModel?.headerView
+        self.view.addSubview(filterView!)
+        filterView?.pin(.leading, .trailing, to: self.view)
+        filterView?.pin(.topMargin, to: tableView)
+        filterView?.pin(.height, constant: 50)
+        self.view.bringSubviewToFront(filterView!)
     }
     
     func initViewModel() {
@@ -48,6 +59,7 @@ class APODTableViewController: UIViewController {
     }
     
     private func getAPODs(completion: @escaping (([APOD]) -> Void)) {
+        //TODO: Dynamic dates
         var params = [String: String]()
         params["start_date"] = "2021-12-15"
         params["end_date"] = "2021-12-23"
@@ -70,6 +82,20 @@ class APODTableViewController: UIViewController {
         let vc = UIViewController()
         present(vc, animated: true, completion: nil)
     }
+    
+    private func hideHeaderView() {
+        UIView.animate(withDuration: 0.2) {
+            self.filterView?.alpha = 0
+            self.tableView.contentInset.top = 10
+        }
+    }
+    
+    private func showHeaderView() {
+        UIView.animate(withDuration: 0.2) {
+            self.filterView?.alpha = 1
+            self.tableView.contentInset.top = 60
+        }
+    }
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
@@ -86,10 +112,20 @@ extension APODTableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //TODO: Coordinator pattern
         guard let model = viewModel?.APODModels[indexPath.row] else { return }
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "APODDetailViewController") as! APODDetailViewController
         vc.apod = model
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > lastContetOffset.y {
+            hideHeaderView()
+        } else {
+            showHeaderView()
+        }
+        lastContetOffset = scrollView.contentOffset
     }
 }
 

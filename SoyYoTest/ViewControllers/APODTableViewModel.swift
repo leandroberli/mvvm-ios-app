@@ -13,13 +13,22 @@ protocol APODTableViewDelegate {
 }
 
 class APODTableViewModel {
-    
-    typealias ButtonClosure = (() -> (Void))?
-    
     var touchFilterAction: (() -> (Void))?
     var APODModels: [APOD] = []
     
-    var getHeaderView: UIView {
+    var cellReuseId: String {
+        get {
+            return "APODTableViewCell"
+        }
+    }
+    
+    var cellNib: UINib {
+        get {
+            return UINib(nibName: "APODTableViewCell", bundle: nil)
+        }
+    }
+    
+    var headerView: UIView {
         get {
             let button = UIButton()
             button.setTitle("Last 7 days", for: .normal)
@@ -38,29 +47,10 @@ class APODTableViewModel {
             let imageView = UIImageView(image: arrowDownImage)
             imageView.tintColor = .black
             view.addSubview(imageView)
+            view.backgroundColor = .white
             imageView.pin(.trailing, to: view, constant: -10)
             imageView.pin(.centerY, to: view)
             return view
-        }
-    }
-    
-    var filterButton: UIButton {
-        get {
-            let selectDateButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 45))
-            selectDateButton.setTitle("Choose date", for: .normal)
-            selectDateButton.setTitleColor(.black, for: .normal)
-            return selectDateButton
-        }
-    }
-    
-    var getFilterNavItem: UIBarButtonItem {
-        get {
-            let button = filterButton
-            button.addTarget(self, action: #selector(filterButtonAction), for: .touchUpInside)
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 45))
-            view.addSubview(button)
-            let navItem = UIBarButtonItem(customView: view)
-            return navItem
         }
     }
     
